@@ -107,15 +107,17 @@ static NSString *const TWTRSessionStoreGuestUserName = @"com.twitter.sdk.ios.cor
     TWTRCheckArgumentWithCompletion2(session, completion);
 
     if (verifySession) {
-        [TWTRNetworkSessionProvider verifyUserSession:session withAuthConfig:self.authConfig APIServiceConfig:self.APIServiceConfig URLSession:self.URLSession completion:^(TWTRSession *userSession, NSError *error) {
-            if (userSession) {
-                [self storeSession:userSession];
-            }
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(userSession, error);
-            });
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [TWTRNetworkSessionProvider verifyUserSession:session withAuthConfig:self.authConfig APIServiceConfig:self.APIServiceConfig URLSession:self.URLSession completion:^(TWTRSession *userSession, NSError *error) {
+                if (userSession) {
+                    [self storeSession:userSession];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(userSession, error);
+                });
+            }];
+        });
     } else {
         [self storeSession:session];
 
