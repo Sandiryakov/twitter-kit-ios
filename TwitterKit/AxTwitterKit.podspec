@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
-  s.name = "TwitterKit"
+  s.name = "AxTwitterKit"
   s.version = "3.4.3"
   s.summary = "Increase user engagement and app growth."
-  s.homepage = "https://github.com/Sandiryakov/twitter-kit-ios"
-  s.documentation_url = "https://github.com/Sandiryakov/twitter-kit-ios/wiki"
-  s.social_media_url = "https://twitter.com/TwitterDev"
+  s.homepage = "https://github.com/Sandiryakov/twitter-kit-ios.git"
+  s.documentation_url = "https://github.com/Sandiryakov/twitter-kit-ios.git/wiki"
+  s.social_media_url = "https://google.com"
   s.authors = "Twitter"
   s.platform = :ios, "9.0"
   s.source = { :http => "https://github.com/Sandiryakov/twitter-kit-ios/releases/download/v3.4.3/TwitterKit.zip" }
